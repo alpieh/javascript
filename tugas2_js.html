@@ -1,0 +1,100 @@
+<!---Diketahui ada 100 orang pegawai dengan nama Pegawai1 s/d Pegawai100:
+Gunakan If multikondisi untuk menentukan jabatan: 
+ - Pegawai1 s/d Pegawai25 jabatan manager, gapok 15jt
+ - Pegawai26 s/d Pegawai50 jabatan asisten manager, gapok 10jt 
+ - Pegawai51 s/d Pegawai75 jabatan supervisor, gapok 7jt
+ - Pegawai76 s/d Pegawai100 jabatan staff, gapok 4jt
+Untuk Gapok gunakan switch case
+            
+Dari Gapok Tentukan:
+- Tunjangan Jabatan = 20 % dari gapok
+- Tunjangan Kesehatan = 10 % dari gapok
+- Gaji Kotor = Gapok + Tunjab + Tunkes
+            
+Gunakan ternary untuk menentukan agama Muslim dan Non Muslim
+baris ganjil Muslim , warna barisnya yellow
+baris genap Non Muslim , warna barisnya biru
+ jika pegawai muslim dan gaji kotornya minimal 7jt, ada zakat profesi sebesar 2,5% dari gaji kotornya
+            
+Take Home Pay = Gaji Kotor - Zakat Profesi
+            
+            
+Tugas: 
+Cetak Data Pegawai dan data terkait berbentuk tabel:
+Format pengumpulan tugas:
+Disimpan di githubnya masing2:
+contoh:
+buat repo baru (javascript) -> file tugas di push di repo tsb dgn nama: tugas2_js.html
+lalu linknya dlm txt di assign ke LMS-->
+<h3 align="center">DAFTAR KARYAWAN</h3>
+		<table align="center" cellpadding="12" width="45%">
+			<thead>
+				<tr bgcolor="tomato">
+					<th>NO</th>
+					<th>NAMA</th>
+					<th>JABATAN</th>
+                    <th>AGAMA</th>
+					<th>GAJI POKOK</th>
+					<th>TUNJANGAN JABATAN</th>
+                    <th>TUNJANGAN KESEHATAN</th>
+					<th>GAJI KOTOR</th>
+					<th>ZAKAT PROFESI</th>
+                    <th>TAKE HOME PAY</th>
+				</tr>
+			</thead>
+			<tbody>
+                <script language="javascript">
+                var no;
+                for(no = 1; no <= 100; no++){
+                    
+                    var jabatan="Manager";
+                    if (no>75 && no <=100) jabatan = "Staff";
+                    else if (no>50 && no<=75) jabatan ="Supervisor";
+                    else if (no>25 && no<=50) jabatan ="Asisten Manager";
+                    else jabatan ="Manager";
+
+                    let agama = "Muslim";
+                    no % 2 == 1 ? agama : agama = "Non Muslim";
+                    const warna = agama === "Muslim" ? "GreenYellow" : "macha";
+                    let gaji_pokok = 0;
+                    switch (jabatan){
+                        case "Manager":
+                        gaji_pokok = 15000000;
+                        break;
+                        case "Asisten Manager":
+                        gaji_pokok = 10000000;
+                        break;
+                        case "Supervisor":
+                        gaji_pokok= 7000000;
+                        break;
+                        case "Staff":
+                        gaji_pokok= 5000000;
+                        break;
+                        default:
+                        gaji_pokok =0;
+                    }
+                    let tunjangan_jabatan = 0.2* gaji_pokok;
+                    let tunjangan_kesehatan = 0.1* gaji_pokok;
+                    let gaji_kotor =gaji_pokok + tunjangan_jabatan +tunjangan_kesehatan;
+                    let zakat = 0;
+                    if (agama == "Muslim" && gaji_pokok >= 7000000)zakat =0.025 *gaji_kotor;
+                    else zakat = 0;
+
+                    let takehomepay = gaji_kotor - zakat;
+                    // cetak
+                    document.write (`<tr bgcolor=${warna}>
+                        <td>${no}</td>
+                        <td>Pegawai${no}</td>
+                        <td>${jabatan}</td>
+                        <td>${agama}</td>
+                        <td>Rp. ${gaji_pokok}</td>
+                        <td>Rp. ${tunjangan_jabatan}</td>
+                        <td>Rp. ${tunjangan_kesehatan}</td>
+                        <td>Rp. ${gaji_kotor}</td>
+                        <td>Rp. ${zakat}</td>
+                        <td>Rp. ${takehomepay}</td>
+                        </tr>`)              
+                }
+                </script>
+			</tbody>
+        </table>

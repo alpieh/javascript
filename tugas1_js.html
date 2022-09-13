@@ -1,0 +1,51 @@
+<script language ="javascript">
+/*
+Diketahui :
+Pegawai : Ridwan
+Jabatan : Manager
+Status : Menikah
+Tugas :
+Catat Data Pegawai berbentuk tabel:
+Judul kolom gunakan thead
+Data-data gunakan tbody
+Nama Pegawai, Jabatan, Status
+Gaji Pokok (if): Manager=>15jt, Asisten Manager=> 10jt, Staff=>5jt
+Tunjangan Jabatan 15% dari gaji pokok
+BPJS: 10% dari gaji pokok
+Tunjangan Keluarga (Ternary): dilihat dari status yang sudah menikah => 20% dari gaji pokok
+Total Gaji: jumlahkan seluruh element gaji (gunakan tfoot)
+*/
+
+var nama_pegawai = "Ridwan";
+var jabatan = 'Manager';
+var status ='Menikah';
+
+//gaji pokok
+if(jabatan == 'Manager'){
+        gajiPokok = 15000000;
+   }
+   else if(jabatan == 'Asisten Manager'){
+        gajiPokok = 10000000;
+   }
+   else if(jabatan == 'Staff'){
+        gajiPokok = 5000000;
+   }
+   else{gajiPokok =0;
+   }
+//Tunjangan Jabatan
+let tunjanganJabatan = 0.15* gajiPokok
+//Bpjs
+let Bpjs = 0.1*gajiPokok;
+//Tunjangan Keluarga
+   if(status == 'Menikah') TunjanganKeluarga = 0.2 *gajiPokok;
+   else TunjanganKeluarga = 0; 
+//Total Gaji
+let TotalGaji =gajiPokok+tunjanganJabatan+Bpjs+TunjanganKeluarga;
+
+//cetak
+document.write("<br><h2>DATA PEGAWAI</h2>" +
+        "Nama Pegawai:"  + nama_pegawai+
+        "<br/>Jabatan Pegawai: "  + jabatan+
+        "<br/>Status Pegawai: "  + status);
+document.write(`<table cellpadding='8' cellspacing='0' width='40%' border='2'><thead bgcolor='brown'><th>Data</th> <th>Keterangan</th></thead> <tr><td>Gaji Pokok</td> <td>Rp. ${gajiPokok}</td></tr> <tr><td>Tunjangan Jabatan</td> <td>Rp. ${tunjanganJabatan}</td></tr> <tr><td>BPJS</td> <td>Rp. ${Bpjs} </td></tr> <tr><td>Tunjangan Keluarga</td> <td>Rp. ${TunjanganKeluarga}</td></tr> <tfoot bgcolor='brown'><th>Total</th> <th align='left'>Rp. ${TotalGaji}</th></table>`)
+</script>
